@@ -18,7 +18,6 @@ public class TodoController {
     private TodoService todoService;
 
     //Build Add Todo REST API
-
     @PostMapping()
 
     public ResponseEntity<TodoDto> addTodo(@RequestBody TodoDto todoDto)
