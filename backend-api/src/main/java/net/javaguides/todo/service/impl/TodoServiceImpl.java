@@ -29,4 +29,11 @@ public class TodoServiceImpl implements TodoService {
         // Convert saved Todo Jpa entity into TodoDto object
         return modelMapper.map(saveTodo, TodoDto.class);
     }
+
+    @Override
+    public TodoDto getTodo(Long id) {
+        Todo todo = todoRepository.findById(id).get();
+
+        return modelMapper.map(todo, TodoDto.class);
+    }
 }
