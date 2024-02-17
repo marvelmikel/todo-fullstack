@@ -12,4 +12,6 @@ export const saveTodo = (todo) => axios.post(REST_API_BASE_URL, todo);
 
 export const getTodo = (id) => axios.get(REST_API_BASE_URL + '/' + id);
 
-export const updateTodo =(id, todo) => axios.put(REST_API_BASE_URL + '/' + id, todo)
+export const updateTodo =(id, todo) => axios.put(REST_API_BASE_URL + '/' + id, todo);
+
+export const deleteTodo = (id) => axios.delete(REST_API_BASE_URL + '/' + id);
