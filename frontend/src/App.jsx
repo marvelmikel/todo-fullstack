@@ -8,9 +8,19 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
     <HeaderComponent/>
-     <ListTodoComponent/>
+    <Routes>
+      http:localhost:8080
+      <Route path='/' element = {  <ListTodoComponent/>}> </Route>
+
+      //http:localhost:8080/todos
+      <Route path='/todos' element = {  <ListTodoComponent/>}> </Route>
+
+    </Routes>
      <FooterComponent/>
+    </BrowserRouter>
+   
     </>
   )
 }
