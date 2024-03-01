@@ -9,8 +9,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,24 +25,24 @@ public class SpringSecurityConfig {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.csrf((csrf) -> csrf.disable())
+        http.csrf().disable()
                 .authorizeHttpRequests((authorize) -> {
-//                    authorize.requestMatchers(HttpMethod.POST,  "/api/**").hasRole("ADMIN");
+//                    authorize.requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN");
 //                    authorize.requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN");
 //                    authorize.requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN");
 //                    authorize.requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("ADMIN", "USER");
 //                    authorize.requestMatchers(HttpMethod.PATCH, "/api/**").hasAnyRole("ADMIN", "USER");
+//                    authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll();
                     authorize.anyRequest().authenticated();
                 }).httpBasic(Customizer.withDefaults());
         return http.build();
-
     }
 
     @Bean
@@ -53,18 +51,20 @@ public class SpringSecurityConfig {
     }
 
 //    @Bean
-//    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-//        UserDetails marvel = User.builder()
-//                .username("marvel")
-//                .password(passwordEncoder.encode("password"))
+//    public UserDetailsService userDetailsService(){
+//
+//        UserDetails ramesh = User.builder()
+//                .username("ramesh")
+//                .password(passwordEncoder().encode("password"))
 //                .roles("USER")
 //                .build();
 //
 //        UserDetails admin = User.builder()
 //                .username("admin")
-//                .password(passwordEncoder.encode("admin"))
+//                .password(passwordEncoder().encode("admin"))
 //                .roles("ADMIN")
 //                .build();
-//        return new InMemoryUserDetailsManager(marvel, admin);
+//
+//        return new InMemoryUserDetailsManager(ramesh, admin);
 //    }
 }
