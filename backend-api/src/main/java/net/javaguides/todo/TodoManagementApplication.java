@@ -1,5 +1,6 @@
 package net.javaguides.todo;
 
+import com.treblle.spring.annotation.EnableTreblle;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,12 +10,12 @@ import org.springframework.context.annotation.Bean;
 public class TodoManagementApplication {
 
 	@Bean
-	public ModelMapper modelMapper(){
+	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodoManagementApplication.class, args);
 	}
-
 }
+
