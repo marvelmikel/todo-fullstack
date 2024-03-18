@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ListTodoComponent from './components/ListTodoComponent'
 import TodoComponent from './components/TodoComponent'
 import RegisterComponent from './components/RegisterComponent'
+import LoginComponent from './components/LoginComponent'
 
 function App() {
 
@@ -25,8 +26,11 @@ function App() {
       //http:localhost:8080/update-todo/id
       <Route path='/update-todo/:id' element = {  <TodoComponent/>}> </Route>
 
-      //http:localhost:8080/reguster
+      //http:localhost:8080/register
       <Route path='/register' element = {  <RegisterComponent/>}> </Route>
+
+      //http:localhost:8080/login
+      <Route path='/login' element = {  <LoginComponent/>}> </Route>
 
     </Routes>
      <FooterComponent/>
