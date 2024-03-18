@@ -21,7 +21,6 @@ public class TodoController {
     //Build Add Todo REST API
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
-
     public ResponseEntity<TodoDto> addTodo(@RequestBody TodoDto todoDto)
     {
         TodoDto savedTodo = todoService.addTodo(todoDto);
@@ -39,7 +38,7 @@ public class TodoController {
 
     // Build GET ALL TODO REST API
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<TodoDto>> getAllTodos(){
         List<TodoDto> todos = todoService.getAllTodo();
 //        return new ResponseEntity<>(todos, HttpStatus.OK);
