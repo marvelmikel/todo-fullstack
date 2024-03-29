@@ -21,10 +21,10 @@ const LoginComponent = () => {
             const token = 'Bearer ' + response.data.accessToken;
 
             const role = response.data.role;
-            
+
             storeToken(token);
 
-            saveLoggedInUser(username);
+            saveLoggedInUser(username, role);
             navigator('/todos');
 
             window.location.reload(false);
